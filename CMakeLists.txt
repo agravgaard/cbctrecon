@@ -158,11 +158,12 @@ QT5_ADD_RESOURCES(CbctRecon_RESOURCES_RCC ${CbctRecon_RESOURCES})
 
 ADD_EXECUTABLE(CbctRecon ${CbctRecon_SOURCES} 
 	${CbctRecon_HEADERS} 
-    ${CbctRecon_HEADERS_MOC} 
-    ${CbctRecon_FORMS_HEADERS} 
-     )
+	${CbctRecon_HEADERS_MOC} 
+	${CbctRecon_FORMS_HEADERS} 
+	)
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_CURRENT_BINARY_DIR})
 
 #SET (PLASTIMATCH_INCLUDE_DIRS
 #	${PLASTIMATCH_INCLUDE_DIRS}
@@ -170,9 +171,9 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 #	"H:/lib/plastimatch/SRC/src/plastimatch/cli"
 #	"H:/lib/plastimatch/SRC/src/plastimatch/clp")
 
-SET (PLASTIMATCH_INCLUDE_DIRS
-	${PLASTIMATCH_INCLUDE_DIRS}
-	"C:/Users/PC/Builds/Plastimatch/plastimatch-master/src/plastimatch/reconstruct")
+#SET (PLASTIMATCH_INCLUDE_DIRS
+#	${PLASTIMATCH_INCLUDE_DIRS}
+#	"C:/Users/PC/Builds/Plastimatch/plastimatch-master/src/plastimatch/reconstruct")
 
 message (STATUS "PLASTIMATCH_SOURCE_DIRECTORY = ${PLASTIMATCH_INCLUDE_DIRS}")
 message (STATUS "CMAKE_LIBRARY_PATH = ${CMAKE_LIBRARY_PATH}")
@@ -197,6 +198,21 @@ message (STATUS "DCMTK_LIBRARY_DIRS = ${DCMTK_LIBRARY_DIRS}")
 message (STATUS "DCMTK_LIBRARIES = ${DCMTK_LIBRARIES}")
 
 #this is for "Linker->Additional dependencies"
+if(UNIX)
+TARGET_LINK_LIBRARIES(CbctRecon
+${ITK_LIBRARIES}
+${RTK_LIBRARIES}
+${QT_LIBRARIES}
+${Qt5Core_LIBRARIES}
+${Qt5Widgets_LIBRARIES}
+${Qt5OpenGL_LIBRARIES}
+${Qt5PrintSupport_LIBRARIES}
+${CUDA_LIBRARIES}
+${CUDA_FFT_LIB}
+${OPENCL_LIBRARIES}
+${PLASTIMATCH_LIBRARIES}
+)
+elseif ()
 TARGET_LINK_LIBRARIES(CbctRecon
 netapi32.lib
 ${ITK_LIBRARIES}
@@ -213,4 +229,4 @@ ${PLASTIMATCH_LIBRARIES}
 Winmm.lib
 #${DCMTK_LIBRARIES} a lot of link error.. dectection.. 
 )
-
+endif()

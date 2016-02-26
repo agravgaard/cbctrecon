@@ -408,10 +408,12 @@ void DlgRegistration::whenFixedImgLoaded()
     ui.sliderPosDisp3->setMaximum(imgSize[0]-1);
     int curPosX = imgSize[0]/2;
     ui.sliderPosDisp3->setValue(curPosX);
-	
-	m_YKDisp[0].SetSplitCenter(QPoint(imgSize[0]/2, imgSize[1]/2));
-	m_YKDisp[1].SetSplitCenter(QPoint(imgSize[0]/2, imgSize[2]/2));
-	m_YKDisp[2].SetSplitCenter(QPoint(imgSize[1]/2, imgSize[2]/2));
+	QPoint qPoint0 = QPoint(imgSize[0]/2, imgSize[1]/2);
+	QPoint qPoint1 = QPoint(imgSize[0]/2, imgSize[2]/2);
+	QPoint qPoint2 = QPoint(imgSize[1]/2, imgSize[2]/2);
+	m_YKDisp[0].SetSplitCenter(qPoint0);
+	m_YKDisp[1].SetSplitCenter(qPoint1);
+	m_YKDisp[2].SetSplitCenter(qPoint2);
 
 	//Temporarily load the Disp Image to calculate the window level
 	//m_pParent->Draw2DFrom3D(m_pParent->m_spReconImg, PLANE_AXIAL, 0.0, m_YKDisp[0]);
@@ -560,7 +562,7 @@ void DlgRegistration::UpdateSplit(int viewIdx, qyklabel* pOverlapWnd)
 	return;
 
   double dspWidth = pOverlapWnd->width();
-  double dspHeight = pOverlapWnd->height();	
+  double dspHeight = pOverlapWnd->height();
 
   int dataWidth = m_YKDisp[idx].m_iWidth;
   int dataHeight = m_YKDisp[idx].m_iHeight;
@@ -573,20 +575,22 @@ void DlgRegistration::UpdateSplit(int viewIdx, qyklabel* pOverlapWnd)
   //only works when while the left Mouse is being clicked
   if (m_bPressedLeft[idx])
   {
-	m_YKDisp[idx].SetSplitCenter(QPoint(dataX,dataY));
+  	QPoint XYpoint = QPoint(dataX,dataY);
+	m_YKDisp[idx].SetSplitCenter(XYpoint);
 	SLT_DrawImageInFixedSlice();
   }
   else if (m_bPressedRight[idx] && ui.checkBoxPan->isChecked())
-  {	
+  {
 	////Update offset information of dispImage
 
 	//GetOriginalDataPos (PanStart)
 	//offset should be 0.. only relative distance matters. offset is in realtime changing
+	QPoint pointO = QPoint(0,0);
 	QPoint ptDataPanStartRel = pOverlapWnd->View2DataExt(m_ptPanStart, dspWidth,
-	  dspHeight, dataWidth, dataHeight, QPoint(0,0), m_YKDisp[idx].m_fZoom);
-
-	QPoint ptDataPanEndRel = pOverlapWnd->View2DataExt(QPoint(pOverlapWnd->x,pOverlapWnd->y), dspWidth,
-	  dspHeight, dataWidth, dataHeight, QPoint(0,0), m_YKDisp[idx].m_fZoom);	  
+	  dspHeight, dataWidth, dataHeight, pointO, m_YKDisp[idx].m_fZoom);
+	QPoint pointOverlap = QPoint(pOverlapWnd->x,pOverlapWnd->y);
+	QPoint ptDataPanEndRel = pOverlapWnd->View2DataExt(pointOverlap, dspWidth,
+	  dspHeight, dataWidth, dataHeight, pointO, m_YKDisp[idx].m_fZoom);
 
 	//int dspOffsetX = pOverlapWnd->x - m_ptPanStart.x();
 	//int dspOffsetY = m_ptPanStart.y() - pOverlapWnd->y;
@@ -1110,7 +1114,9 @@ void DlgRegistration::SLT_DoRegistrationRigid()//plastimatch auto registration
       m_pParent->m_spRawReconImg = reader2->GetOutput();
 
       double tmpSkinMargin = ui.lineEditCBCTSkinCropBfRegid->text().toDouble();
-      m_pParent->UpdateReconImage(m_pParent->m_spRawReconImg, QString("Skin removed CBCT with margin %1 mm").arg(tmpSkinMargin));
+      QString QSmarg = QString("Skin removed CBCT with margin %1 mm");
+      QString QSmargarg = QSmarg.arg(tmpSkinMargin);
+      m_pParent->UpdateReconImage(m_pParent->m_spRawReconImg, QSmarg);
   }
 
   if (!finfoFixedProc.exists())
@@ -2920,15 +2926,18 @@ void DlgRegistration::init( QString& strDCMUID )
 
 void DlgRegistration::SLT_PassFixedImgForAnalysis()
 {
-  if (m_spFixed)  
-	m_pParent->UpdateReconImage(m_spFixed, ui.comboBoxImgFixed->currentText());
-  
+  if (m_spFixed){
+  	QString curText = ui.comboBoxImgFixed->currentText();
+	m_pParent->UpdateReconImage(m_spFixed, curText);
+  }
 }
 
 void DlgRegistration::SLT_PassMovingImgForAnalysis()
 {
-  if (m_spMoving)
-	m_pParent->UpdateReconImage(m_spMoving, ui.comboBoxImgMoving->currentText());
+  if (m_spMoving){
+  	QString curText = ui.comboBoxImgMoving->currentText();
+	m_pParent->UpdateReconImage(m_spMoving, curText);
+  }
 }
 
 void DlgRegistration::PostSkinRemovingCBCT( USHORT_ImageType::Pointer& spCBCT )
@@ -3515,7 +3524,8 @@ void DlgRegistration::SLT_ConfirmManualRegistration()
         m_pParent->m_spRawReconImg = reader->GetOutput();
 
         double tmpSkinMargin = ui.lineEditCBCTSkinCropBfRegid->text().toDouble();
-        m_pParent->UpdateReconImage(m_pParent->m_spRawReconImg, QString("Skin removed CBCT with margin %1 mm").arg(tmpSkinMargin));
+        QString QSmarg = QString("Skin removed CBCT with margin %1 mm").arg(tmpSkinMargin);
+        m_pParent->UpdateReconImage(m_pParent->m_spRawReconImg, QSmarg);
 
         cout << "Reading is completed" << endl;
 
@@ -3561,7 +3571,7 @@ void DlgRegistration::SLT_IntensityNormCBCT()
     //SLT_PassMovingImgForAnalysis();
 
     cout << "Intensity shifting is done! Added value = " << (int)(meanIntensityMov - meanIntensityFix) << endl;
-    
-    m_pParent->UpdateReconImage(m_spFixed, QString("Added_%1").arg((int)(meanIntensityMov - meanIntensityFix)));    
+    QString QSadded = QString("Added_%1").arg((int)(meanIntensityMov - meanIntensityFix));
+    m_pParent->UpdateReconImage(m_spFixed, QSadded);
     SelectComboExternal(0, REGISTER_RAW_CBCT);
 }

@@ -69,7 +69,18 @@
 #include <rtkProjectionsReader.h>
 #include <rtkFieldOfViewImageFilter.h>
 
+#ifdef _WIN32
 #include <MMSystem.h>
+#else
+#include <pthread.h>
+#include <fcntl.h>
+#include <sys/shm.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
+#include <semaphore.h>
+#include <errno.h>
+#endif
 
 // ITK includes
 #include <itkStreamingImageFilter.h>
@@ -86,7 +97,9 @@
 //#include "plm_int.h"
 //#include "threading.h"
 //#include "volume.h"
-
+#ifndef _WIN32
+typedef unsigned short USHORT;
+#endif
 typedef float FloatPixelType;
 typedef signed short SHORT_PixelType;
 typedef unsigned short USHORT_PixelType;

@@ -7,7 +7,18 @@
 #include <fstream>
 #include <QInputDialog>
 
+#ifdef _WIN32
 #include <windows.h>
+#else
+#include <pthread.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
+#include <semaphore.h>
+#include <errno.h>
+#endif
 
 #include "itkImageDuplicator.h"
 #include "itkImageSliceConstIteratorWithIndex.h"
@@ -15,7 +26,7 @@
 
 
 #include <QStandardItemModel>
-#include <QClipBoard>
+#include <QClipboard>
 #include <QVector>
 #include <QDir>
 #include <QFileInfo>
@@ -52,8 +63,8 @@
 #include "rt_study_metadata.h"
 
 #include "aperture.h"
-#include "Rt_beam.h"
-#include "Rt_plan.h"
+#include "rt_beam.h"
+#include "rt_plan.h"
 #include "plm_math.h"
 #include "proj_volume.h"
 #include "ray_trace_probe.h"
@@ -221,8 +232,8 @@ CbctRecon::CbctRecon(QWidget *parent, Qt::WindowFlags flags)
 
 	m_strPathDirDefault = QDir::currentPath();
 	cout << "Current Default Dir: " << m_strPathDirDefault.toLocal8Bit().constData() << endl;
-
-	init_DlgRegistration(QString("tmp"));//to Setup plastimatch folder. this is useful if registration will be only done
+	QString tmpFolder = QString("tmp");
+	init_DlgRegistration(tmpFolder);//to Setup plastimatch folder. this is useful if registration will be only done
 
 	//shell test
 	//QString strCurFolder = "H:\\lib\\rtk\\NightlyBUILD64\\bin\\Release";
@@ -347,8 +358,8 @@ void CbctRecon::RenameFromHexToDecimal(QStringList& filenameList)
 		crntFilePath = filenameList.at(i);
 		QFileInfo fileInfo = QFileInfo(crntFilePath);
 		QDir dir = fileInfo.absoluteDir();
-
-		QString newBaseName = HexStr2IntStr(fileInfo.baseName());
+		QString oldBaseName = fileInfo.baseName();
+		QString newBaseName = HexStr2IntStr(oldBaseName);
 		QString extStr = fileInfo.completeSuffix();
 
 		QString newFileName = newBaseName.append(".").append(extStr);
@@ -2148,11 +2159,13 @@ void CbctRecon::DoReconstructionTV(enREGI_IMAGES target)  // ADDED BY AGRAVGAARD
 	//SLT_ViewRegistration();
 	if (target == REGISTER_COR_CBCT)
 	{
-		UpdateReconImage(m_spCrntReconImg, QString("SCATTER_COR_CBCT"));
+		QString qStringScatt = QString("SCATTER_COR_CBCT");
+		UpdateReconImage(m_spCrntReconImg, qStringScatt);
 	}
 	else if (target == REGISTER_RAW_CBCT)
 	{
-		UpdateReconImage(m_spCrntReconImg, QString("RAW_CBCT"));
+		QString qStringRaw = QString("RAW_CBCT");
+		UpdateReconImage(m_spCrntReconImg, qStringRaw);
 	}
 
 	cout << "FINISHED!: Total Variation CBCT reconstruction" << endl;
@@ -2727,11 +2740,13 @@ void CbctRecon::DoReconstructionFDK(enREGI_IMAGES target)
 	//SLT_ViewRegistration();
 	if (target == REGISTER_COR_CBCT)
 	{
-	  UpdateReconImage(m_spCrntReconImg, QString("SCATTER_COR_CBCT"));
+		QString qStringScatt = QString("SCATTER_COR_CBCT");
+		UpdateReconImage(m_spCrntReconImg, qStringScatt);
 	}
 	else if (target == REGISTER_RAW_CBCT)
 	{
-	  UpdateReconImage(m_spCrntReconImg, QString("RAW_CBCT"));
+		QString qStringRaw = QString("RAW_CBCT");
+		UpdateReconImage(m_spCrntReconImg, qStringRaw);
 	}
 
 	cout << "FINISHED!: FDK CBCT reconstruction" << endl;
@@ -3389,8 +3404,9 @@ void CbctRecon::SLT_LoadSelectedProjFiles()//main loading fuction for projection
 	  SLT_DoReconstruction();
 	  cout << "FINISHED!: Reconstruction. Load pCT and Proceed to registration" << endl;
   }
-
+#ifdef _WIN32
   PlaySound(TEXT("chime.wav"), NULL, SND_SYNC);
+#endif
 }
 
 //
@@ -4090,8 +4106,8 @@ bool CbctRecon::IsFileNameOrderCorrect(vector<string>& vFileNames)
 		crntFilePath = vFileNames.at(i).c_str();
 		QFileInfo fileInfo = QFileInfo(crntFilePath);
 		QDir dir = fileInfo.absoluteDir();
-
-		QString newBaseName = HexStr2IntStr(fileInfo.baseName());
+		QString oldBaseName = fileInfo.baseName();
+		QString newBaseName = HexStr2IntStr(oldBaseName);
 		arrNum[i]= newBaseName.toInt();
 	}
 
@@ -7722,7 +7738,8 @@ void CbctRecon::AfterScatCorrectionMacro()
   m_pDlgRegistration->SelectComboExternal(0, REGISTER_RAW_CBCT); // will call fixedImageSelected
   m_pDlgRegistration->SelectComboExternal(1, REGISTER_COR_CBCT );
 
-  UpdateReconImage(m_spScatCorrReconImg, QString("Scatter corrected CBCT")); //main GUI update
+  QString qStringScatt = QString("Scatter corrected CBCT");
+  UpdateReconImage(m_spScatCorrReconImg, qStringScatt); //main GUI update
 
   //Save Image as DICOM
 
@@ -7738,7 +7755,8 @@ void CbctRecon::AfterScatCorrectionMacro()
           cout << "DICOM dir seems to exist already. Files will be overwritten." << endl;
       }
       QString strSavingFolder = strCrntDir + "/" + SubDirName;
-      SaveUSHORTAsSHORT_DICOM(m_spScatCorrReconImg, m_strDCMUID, QString("PriorCT_ScatterCorr"), strSavingFolder);
+      QString qSname = QString("PriorCT_ScatterCorr");
+      SaveUSHORTAsSHORT_DICOM(m_spScatCorrReconImg, m_strDCMUID, qSname, strSavingFolder);
       //Export as DICOM (using plastimatch) folder?
   }
 }
@@ -7869,7 +7887,8 @@ void CbctRecon::SLT_LoadPlanCT_USHORT()
 
   m_spRefCTImg = reader->GetOutput();
 
-  UpdateReconImage(m_spRefCTImg, QString("RefCT"));
+  QString qStringRef = QString("RefCT");
+  UpdateReconImage(m_spRefCTImg, qStringRef);
 
   RegisterImgDuplication(REGISTER_REF_CT, REGISTER_MANUAL_RIGID);
 }
@@ -8012,7 +8031,8 @@ void CbctRecon::SLT_AddConstHUToCurImg()
 	return;
   int addingVal = ui.lineEdit_AddConstHU->text().toInt();
   AddConstHU(m_spCrntReconImg, addingVal);
-  UpdateReconImage(m_spCrntReconImg, QString("Added%1").arg(addingVal));
+  QString qStringAdd = QString("Added%1").arg(addingVal);
+  UpdateReconImage(m_spCrntReconImg, qStringAdd);
 }
 
 double CbctRecon::GetRawIntensityScaleFactor()
@@ -8067,17 +8087,20 @@ void CbctRecon::SLT_CropSkinUsingRS()
   if (m_spCrntReconImg == m_spRawReconImg)
   {
 	m_pDlgRegistration->CropSkinUsingRS(m_spRawReconImg, strPathRS, croppingMargin);
-	UpdateReconImage(m_spRawReconImg,QString("RS-based skin cropped image"));
+	QString qStringCropd = QString("RS-based skin cropped image");
+	UpdateReconImage(m_spRawReconImg, qStringCropd);
   }
   else if (m_spCrntReconImg == m_spRefCTImg)
   {
 	m_pDlgRegistration->CropSkinUsingRS(m_spRefCTImg, strPathRS, croppingMargin);
-	UpdateReconImage(m_spRefCTImg,QString("RS-based skin cropped image"));
+	QString qStringCropd = QString("RS-based skin cropped image");
+	UpdateReconImage(m_spRefCTImg, qStringCropd);
   }
   else if (m_spCrntReconImg == m_spScatCorrReconImg)
   {
 	m_pDlgRegistration->CropSkinUsingRS(m_spScatCorrReconImg, strPathRS, croppingMargin);
-	UpdateReconImage(m_spScatCorrReconImg,QString("RS-based skin cropped image"));
+	QString qStringCropd = QString("RS-based skin cropped image");
+	UpdateReconImage(m_spScatCorrReconImg, qStringCropd);
   }
 }
 
@@ -8792,7 +8815,11 @@ void CbctRecon::SLT_StopSyncFromSharedMem()
 
   //HANDLE hSemaphore = OpenSemaphore(SYNCHRONIZE ,FALSE, "YKSemaphore");
   //Option SYNCHRONIZE doesn't work! you cannot release Semaphore due to the access is denied (GetLastError 5)
+#ifdef _WIN32
   HANDLE hSemaphore = OpenSemaphore(SEMAPHORE_ALL_ACCESS ,FALSE, "YKSemaphore");
+#else
+  sem_t* hSemaphore = sem_open("YKSemaphore", O_CREAT, O_RDWR, 1);
+#endif
   //increase counter
 //  LONG prev_counter;
  // ReleaseSemaphore(hSemaphore, 1, &prev_counter);
@@ -8800,7 +8827,11 @@ void CbctRecon::SLT_StopSyncFromSharedMem()
   //ReleaseSemaphore(hSemaphore, 1, &prev_counter);
 
   ofstream fout;
+#ifdef _WIN32
   fout.open("E:\\SemphoreLogC++.txt");
+#else
+  fout.open("$HOME/SemphoreLogC++.txt");
+#endif
 
 
   int max_cnt = 200;
@@ -8809,7 +8840,7 @@ void CbctRecon::SLT_StopSyncFromSharedMem()
   while(cnt < max_cnt)
   {
 	cnt++;
-
+#ifdef _WIN32
 	DWORD dwWaitResult  = WaitForSingleObject(hSemaphore, 5);
 
 	switch (dwWaitResult)
@@ -8837,8 +8868,24 @@ void CbctRecon::SLT_StopSyncFromSharedMem()
 	  break;
 	}
 	//	ReleaseSemaphore(hSemaphore, 1, &prev_counter);
-  }
 
+#else
+	int dwWaitResult  = sem_wait(hSemaphore);
+
+	if (dwWaitResult == 0)
+	{
+	  printf("wait succeeded\n");
+	  fout << "wait succeeded" << endl;
+	  int unlinkRes = sem_unlink("YKSemaphore");
+	}
+	else {
+	  printf("wait failed\n");
+	  fout << "wait failed" << endl;
+	  int unlinkRes = sem_unlink("YKSemaphore");
+	}
+#endif
+
+  }
   fout.close();
 }
 
@@ -8853,8 +8900,13 @@ void CbctRecon::SLT_TimerEvent()
   m_busyTimer = true;
 
   //Look into the shared mem
+#ifdef _WIN32
   TCHAR szName[] = TEXT("YKSharedMemory");
   HANDLE handle = OpenFileMapping(FILE_MAP_READ, FALSE, szName);
+#else
+  char szName[] = "YKSharedMemory";
+  int handle = shm_open(szName, O_CREAT, O_RDONLY);
+#endif
 
   if (handle == NULL)
   {
@@ -8866,13 +8918,23 @@ void CbctRecon::SLT_TimerEvent()
   int size = 1024*1024*2;
   int pix_size = (int)(size/2.0);
   unsigned char* charBuf = NULL;
+#ifdef _WIN32
   charBuf = (unsigned char*)MapViewOfFile(handle, FILE_MAP_READ, 0, 0, size);
-
+#else
+  charBuf = (unsigned char*)mmap((void *)handle, (size_t) size, PROT_READ, MAP_SHARED, 1, (off_t) size);
+#endif
   if (charBuf == NULL)
   {
 	cout << "Shared memory was not read. Timer will be stopped" << endl;
 	SLT_StopSyncFromSharedMem();
+#ifdef _WIN32
 	CloseHandle(handle);
+#else
+	int closeCheck = shm_unlink(szName);
+	if (closeCheck != 0){
+		cout << "close(handle) failed.." <<endl;
+	}
+#endif
 	delete[] charBuf;
 	return;
   }
@@ -8895,7 +8957,14 @@ void CbctRecon::SLT_TimerEvent()
   ui.spinBoxImgIdx->setValue(0);
   SLT_DrawRawImages();
 
-  CloseHandle(handle);
+#ifdef _WIN32
+	CloseHandle(handle);
+#else
+	int closeCheck = shm_unlink(szName);
+	if (closeCheck != 0){
+		cout << "close(handle) failed.." <<endl;
+	}
+#endif
 
   m_busyTimer = false;
 }
@@ -9096,7 +9165,8 @@ void CbctRecon::SLTM_LoadDICOMdir()
 	//m_spRawReconImg = spRescaleFilter->GetOutput();
 	m_spRefCTImg = spRescaleFilter->GetOutput();
 
-	UpdateReconImage(m_spRefCTImg, QString("DICOM reference image"));
+	QString qStringDic = QString("DICOM reference image");
+	UpdateReconImage(m_spRefCTImg, qStringDic);
 
 	RegisterImgDuplication(REGISTER_REF_CT, REGISTER_MANUAL_RIGID);
 }
@@ -9137,8 +9207,8 @@ void CbctRecon::MedianFilterByGUI()
 		cout << "median filtering has been done" << endl;
 
 		QString prevFileName = ui.lineEdit_Cur3DFileName->text();
-
-                UpdateReconImage(m_spCrntReconImg, prevFileName.append("_med"));
+		QString qStringMed = prevFileName.append("_med");
+                UpdateReconImage(m_spCrntReconImg, qStringMed);
 	}
 	else
 	{
