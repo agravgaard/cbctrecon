@@ -111,7 +111,7 @@ void DlgExternalCommand::SLT_GenRTKCommand()
 	//QString strOutDirection; //no clue about what it is	
 	
 	//geometry
-	QString str_mainGeometry = m_pParent->ui.lineEdit_ElektaGeomPath->text();
+	QString str_mainGeometry = m_pParent->ui.lineEdit_GeomPath->text();
 
 	if (str_mainGeometry.length() < 1)
 		cout << "Command will not be valid. set geometry file path in the main UI first." << endl;

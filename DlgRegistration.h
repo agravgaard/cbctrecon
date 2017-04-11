@@ -90,7 +90,6 @@ public slots:
 	void SLT_DoRegistrationDeform();
         void SLT_DoRegistrationGradient();
         void SLT_ManualMoveByDCMPlan();
-        void SLT_ManualMoveByDCMPlanOpen();
 
 	void SLT_BringFocusToEnableArrow(bool bChecked);
 
@@ -105,15 +104,15 @@ public slots:
 	void SLT_PreProcessCT();
 
 	void SLT_PassFixedImgForAnalysis();
-	void SLT_PassMovingImgForAnalysis();	
+	void SLT_PassMovingImgForAnalysis();
+	void SLT_Macro();
 
 	void SLT_ExchangeRawRef();
 
         /* After manual move: this will trigger skin cropping and uncheck the key moving*/
         void SLT_ConfirmManualRegistration();
         void SLT_IntensityNormCBCT();
-        void SLT_DoLowerMaskIntensity(); //button
-
+        
 
 
 public:
@@ -176,23 +175,14 @@ public:
           void ProcessCBCT_beforeDeformRegi(QString& strPathRawCBCT, QString& strPath_mskSkinCT_manRegi, QString& strPathOutputCBCT, QString& strPathXFAutoRigid, bool bBubbleFilling, bool bPrepareMaskOnly = false);//8 mm skin cut + fill air bubbles inside CBCT
 
 	 void SetPlmOutputDir(QString& endFix);
-	 void initDlgRegistration(QString& strDCMUID);
+	 void init(QString& strDCMUID);
 
-	 void PostSkinRemovingCBCT(UShortImageType::Pointer& spCBCT); //this function will be called from main Dlg.         
+	 void PostSkinRemovingCBCT(USHORT_ImageType::Pointer& spCBCT); //this function will be called from main Dlg.
 
-	 void CropSkinUsingRS(UShortImageType::Pointer& spImgUshort, QString& strPathRS, double cropMargin );
+	 void CropSkinUsingRS(USHORT_ImageType::Pointer& spImgUshort, QString& strPathRS, double cropMargin );
 
-         //void ThermoMaskRemovingCBCT(USHORT_ImageType::Pointer& spCBCTraw, USHORT_ImageType::Pointer& spCBCTcor, int threshold);
-
-         void ThermoMaskRemovingCBCT(UShortImageType::Pointer& spCBCTraw, UShortImageType::Pointer& spCBCTcor, int diffThreshold, int noTouchThreshold = 1100);
-
-         void GenShellMask(QString& strPathInputMask, QString& strPathOutputMask, double fInnerMargin, double fOuterMargin);
-
-        VEC3D GetIsocenterDCM_FromRTPlan(QString& strFilePath);
-
-
-
-	 //void keyPressEvent ( QKeyEvent * e );	 
+	 //void keyPressEvent ( QKeyEvent * e );
+	 
      //void Draw2DFrom3D(USHORT_ImageType::Pointer& pImg, enPLANE direction, double pos, YK16GrayImage* pOutput2D);
      //void Draw2DFrom3D(USHORT_ImageType::Pointer& pImg, enPLANE direction, double pos, YK16GrayImage& Output2D);
     
@@ -215,8 +205,8 @@ public:
 	int m_iTmpOriginalW;
 	int m_iTmpOriginalL;
 
-	UShortImageType::Pointer m_spFixed;//pointer only, for display
-	UShortImageType::Pointer m_spMoving;//pointer only, for display
+	USHORT_ImageType::Pointer m_spFixed;//pointer only, for display
+	USHORT_ImageType::Pointer m_spMoving;//pointer only, for display
 
 
 	QString m_strPathPlastimatch;//full path
@@ -234,7 +224,7 @@ public:
       
 
 
-public:
+private:
     Ui::DlgRegistrationClass ui;
 	
 };

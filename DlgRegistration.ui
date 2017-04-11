@@ -6,12 +6,460 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1152</width>
-    <height>810</height>
+    <width>976</width>
+    <height>676</height>
    </rect>
   </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>170</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>51</red>
+        <green>153</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="NoRole">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>0</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>170</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>85</red>
+        <green>170</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>85</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="NoRole">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>0</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>170</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>255</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>186</red>
+        <green>186</green>
+        <blue>186</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>59</green>
+        <blue>89</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>51</red>
+        <green>153</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>45</red>
+        <green>45</green>
+        <blue>45</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="NoRole">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>85</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>0</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Registration Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 59, 89);
+border-right-color: rgb(0, 170, 255);
+alternate-background-color: rgb(45, 45, 45);
+color: rgb(186, 186, 186);</string>
   </property>
   <widget class="qyklabel" name="labelOverlapWnd1">
    <property name="enabled">
@@ -19,10 +467,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>512</width>
-     <height>512</height>
+     <x>10</x>
+     <y>190</y>
+     <width>421</width>
+     <height>411</height>
     </rect>
    </property>
    <property name="mouseTracking">
@@ -44,10 +492,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>40</y>
+     <x>450</x>
+     <y>180</y>
      <width>256</width>
-     <height>256</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="mouseTracking">
@@ -69,10 +517,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>340</y>
+     <x>450</x>
+     <y>410</y>
      <width>256</width>
-     <height>256</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="mouseTracking">
@@ -91,9 +539,9 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>650</y>
-     <width>381</width>
+     <x>10</x>
+     <y>10</y>
+     <width>341</width>
      <height>131</height>
     </rect>
    </property>
@@ -103,9 +551,9 @@
    <widget class="QComboBox" name="comboBoxImgFixed">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>190</x>
       <y>10</y>
-      <width>161</width>
+      <width>141</width>
       <height>22</height>
      </rect>
     </property>
@@ -114,9 +562,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
-      <width>131</width>
-      <height>31</height>
+      <y>10</y>
+      <width>111</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -219,9 +667,9 @@
    <widget class="QLineEdit" name="lineEditOriginFixed">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>120</x>
       <y>90</y>
-      <width>211</width>
+      <width>201</width>
       <height>20</height>
      </rect>
     </property>
@@ -231,7 +679,7 @@
      <rect>
       <x>10</x>
       <y>90</y>
-      <width>111</width>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
@@ -282,9 +730,9 @@
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>650</y>
-     <width>381</width>
+     <x>350</x>
+     <y>10</y>
+     <width>351</width>
      <height>131</height>
     </rect>
    </property>
@@ -294,9 +742,9 @@
    <widget class="QComboBox" name="comboBoxImgMoving">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>200</x>
       <y>10</y>
-      <width>151</width>
+      <width>131</width>
       <height>22</height>
      </rect>
     </property>
@@ -305,9 +753,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
-      <width>131</width>
-      <height>31</height>
+      <y>10</y>
+      <width>121</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -410,9 +858,9 @@
    <widget class="QLineEdit" name="lineEditOriginMoving">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>120</x>
       <y>90</y>
-      <width>201</width>
+      <width>211</width>
       <height>20</height>
      </rect>
     </property>
@@ -422,7 +870,7 @@
      <rect>
       <x>10</x>
       <y>90</y>
-      <width>111</width>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
@@ -459,7 +907,7 @@
    <widget class="QPushButton" name="pushButtonPassMoving">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>140</x>
       <y>10</y>
       <width>61</width>
       <height>21</height>
@@ -473,9 +921,9 @@
   <widget class="QSlider" name="sliderPosDisp1">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>10</y>
-     <width>361</width>
+     <x>60</x>
+     <y>160</y>
+     <width>281</width>
      <height>21</height>
     </rect>
    </property>
@@ -495,9 +943,9 @@
   <widget class="QSlider" name="sliderPosDisp3">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>310</y>
-     <width>161</width>
+     <x>530</x>
+     <y>380</y>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -517,9 +965,9 @@
   <widget class="QSlider" name="sliderPosDisp2">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>10</y>
-     <width>161</width>
+     <x>530</x>
+     <y>150</y>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -539,10 +987,10 @@
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>560</y>
-     <width>511</width>
-     <height>81</height>
+     <x>10</x>
+     <y>610</y>
+     <width>691</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="title">
@@ -551,9 +999,9 @@
    <widget class="QLineEdit" name="lineEditCurPosX">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>61</width>
+      <x>370</x>
+      <y>10</y>
+      <width>51</width>
       <height>21</height>
      </rect>
     </property>
@@ -561,9 +1009,9 @@
    <widget class="QLineEdit" name="lineEditCurPosY">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>60</y>
-      <width>61</width>
+      <x>470</x>
+      <y>10</y>
+      <width>51</width>
       <height>21</height>
      </rect>
     </property>
@@ -571,9 +1019,9 @@
    <widget class="QLineEdit" name="lineEditCurPosZ">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>60</y>
-      <width>61</width>
+      <x>580</x>
+      <y>10</y>
+      <width>51</width>
       <height>21</height>
      </rect>
     </property>
@@ -581,8 +1029,8 @@
    <widget class="QPushButton" name="pushButtonCurPosGo">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>60</y>
+      <x>630</x>
+      <y>10</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -594,8 +1042,8 @@
    <widget class="QLabel" name="label_20">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>60</y>
+      <x>330</x>
+      <y>10</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -607,8 +1055,8 @@
    <widget class="QLabel" name="label_21">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>60</y>
+      <x>430</x>
+      <y>10</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -620,8 +1068,8 @@
    <widget class="QLabel" name="label_22">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>60</y>
+      <x>530</x>
+      <y>10</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -633,10 +1081,10 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>0</y>
+      <x>10</x>
+      <y>1</y>
       <width>181</width>
-      <height>31</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -651,8 +1099,8 @@
    <widget class="QCheckBox" name="checkBoxDrawCrosshair">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>10</y>
+      <x>20</x>
+      <y>30</y>
       <width>70</width>
       <height>17</height>
      </rect>
@@ -667,7 +1115,7 @@
    <widget class="QCheckBox" name="checkBoxDrawSplit">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>90</x>
       <y>30</y>
       <width>70</width>
       <height>17</height>
@@ -683,7 +1131,7 @@
    <widget class="QCheckBox" name="checkBoxZoom">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>170</x>
       <y>30</y>
       <width>51</width>
       <height>17</height>
@@ -699,7 +1147,7 @@
    <widget class="QCheckBox" name="checkBoxPan">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>170</x>
       <y>10</y>
       <width>51</width>
       <height>17</height>
@@ -715,10 +1163,10 @@
    <widget class="QPushButton" name="pushButtonRestoreSingle">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>230</x>
       <y>10</y>
       <width>81</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -728,10 +1176,10 @@
    <widget class="QPushButton" name="pushButtonRestoreAll">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>50</y>
+      <x>230</x>
+      <y>30</y>
       <width>81</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -742,9 +1190,9 @@
   <widget class="QLabel" name="labelDisp1">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>101</width>
+     <x>20</x>
+     <y>160</y>
+     <width>41</width>
      <height>16</height>
     </rect>
    </property>
@@ -760,9 +1208,9 @@
   <widget class="QLabel" name="labelDisp2">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>10</y>
-     <width>91</width>
+     <x>450</x>
+     <y>150</y>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
@@ -778,8 +1226,8 @@
   <widget class="QLabel" name="labelDisp3">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>310</y>
+     <x>450</x>
+     <y>380</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -796,9 +1244,9 @@
   <widget class="QGroupBox" name="groupBox_4">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>130</y>
-     <width>281</width>
+     <x>710</x>
+     <y>120</y>
+     <width>261</width>
      <height>121</height>
     </rect>
    </property>
@@ -822,7 +1270,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>70</y>
+      <y>60</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -872,7 +1320,7 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>81</width>
+      <width>71</width>
       <height>17</height>
      </rect>
     </property>
@@ -886,9 +1334,9 @@
    <widget class="QLineEdit" name="lineEditGradOption">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>50</y>
-      <width>61</width>
+      <x>160</x>
+      <y>60</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -899,7 +1347,7 @@
    <widget class="QPushButton" name="pushButtonMoveFromDCMPlan">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>190</x>
       <y>20</y>
       <width>61</width>
       <height>23</height>
@@ -922,24 +1370,11 @@
      <string>Crop Skin</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonMoveFromDCMPlanOpen">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>20</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>OpenRTPlan</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonGradSearch">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>50</y>
+      <x>130</x>
+      <y>20</y>
       <width>61</width>
       <height>23</height>
      </rect>
@@ -952,8 +1387,8 @@
   <widget class="QGroupBox" name="groupBox_5">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>450</y>
+     <x>710</x>
+     <y>400</y>
      <width>261</width>
      <height>81</height>
     </rect>
@@ -964,7 +1399,7 @@
    <widget class="QPushButton" name="pushButtonDoRigid">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>100</x>
       <y>40</y>
       <width>91</width>
       <height>31</height>
@@ -990,8 +1425,8 @@
    <widget class="QLineEdit" name="lineEditCBCTSkinCropBfDIR">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>20</y>
+      <x>120</x>
+      <y>10</y>
       <width>41</width>
       <height>20</height>
      </rect>
@@ -1003,8 +1438,8 @@
    <widget class="QLabel" name="label_42">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>20</y>
+      <x>170</x>
+      <y>10</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -1018,7 +1453,7 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>101</width>
+      <width>91</width>
       <height>17</height>
      </rect>
     </property>
@@ -1033,8 +1468,8 @@
   <widget class="QGroupBox" name="groupBox_6">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>540</y>
+     <x>710</x>
+     <y>480</y>
      <width>261</width>
      <height>161</height>
     </rect>
@@ -1045,8 +1480,8 @@
    <widget class="QLabel" name="label_25">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
+      <x>30</x>
+      <y>60</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -1055,11 +1490,24 @@
      <string>Optimization</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBoxDeformOption">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>60</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
+   </widget>
    <widget class="QPushButton" name="pushButtonDoDeformable">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>120</y>
+      <x>10</x>
+      <y>20</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -1072,7 +1520,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>90</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -1085,7 +1533,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>50</y>
+      <y>90</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -1098,7 +1546,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>70</y>
+      <y>110</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -1111,7 +1559,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>90</y>
+      <y>130</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -1120,11 +1568,24 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonMacro">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Macro</string>
+    </property>
+   </widget>
    <widget class="QCheckBox" name="checkBoxUseROIForDIR">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>50</y>
       <width>101</width>
       <height>17</height>
      </rect>
@@ -1140,7 +1601,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>110</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -1153,7 +1614,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>130</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -1162,47 +1623,22 @@
      <string>Step3</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_mse">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>20</y>
-      <width>61</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>MSE</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_mi">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>61</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>MI</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
   </widget>
   <widget class="QPushButton" name="pushButtonChangeView">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>600</y>
+     <x>350</x>
+     <y>140</y>
      <width>91</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Chage View</string>
@@ -1211,9 +1647,9 @@
   <widget class="QGroupBox" name="groupBox_7">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>710</x>
      <y>10</y>
-     <width>221</width>
+     <width>261</width>
      <height>111</height>
     </rect>
    </property>
@@ -1340,7 +1776,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>skin</string>
+     <string>BODY</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEditCropContourName">
@@ -1353,7 +1789,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Skin</string>
+     <string>BODY</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_43">
@@ -1373,10 +1809,10 @@
   <widget class="QGroupBox" name="groupBox_8">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>260</y>
+     <x>710</x>
+     <y>240</y>
      <width>261</width>
-     <height>191</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="title">
@@ -1489,14 +1925,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>skin</string>
+     <string>BODY</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_39">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>70</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -1508,8 +1944,8 @@
    <widget class="QLineEdit" name="lineEditCBCTSkinCropBfRegid">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>80</y>
+      <x>110</x>
+      <y>70</y>
       <width>41</width>
       <height>20</height>
      </rect>
@@ -1521,8 +1957,8 @@
    <widget class="QLabel" name="label_40">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>80</y>
+      <x>160</x>
+      <y>70</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -1535,7 +1971,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>110</y>
+      <y>90</y>
       <width>171</width>
       <height>20</height>
      </rect>
@@ -1548,20 +1984,20 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>110</y>
+      <y>90</y>
       <width>91</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>0.0,0.0,190.0</string>
+     <string>0.0,0.0,130.0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_48">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>130</y>
+      <y>110</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -1574,7 +2010,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
+      <y>130</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -1586,8 +2022,8 @@
    <widget class="QLineEdit" name="lineEditNormRoiRadius">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>150</y>
+      <x>90</x>
+      <y>130</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -1599,186 +2035,14 @@
    <widget class="QPushButton" name="pushButtonIntensityNormCBCT">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>150</y>
+      <x>160</x>
+      <y>130</y>
       <width>91</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Norm. CBCT</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_9">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>710</y>
-     <width>271</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Mask intensity correction</string>
-   </property>
-   <widget class="QCheckBox" name="checkBoxRemoveMaskAfterCor">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>121</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Lower mask intensity</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_44">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Inner</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditThermoInner">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>5.0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_45">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>40</y>
-      <width>21</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>mm</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_46">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>40</y>
-      <width>41</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Outer</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditThermoOuter">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>40</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>10.0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_50">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>40</y>
-      <width>21</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>mm</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_51">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Diff thresh(HU)</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditRawCorThre">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>60</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>100</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonDoLowerMask">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>40</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Do now</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_52">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>60</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>For value above</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditiNoTouchThreshold">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>60</y>
-      <width>41</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>1100</string>
     </property>
    </widget>
   </widget>
@@ -2122,8 +2386,8 @@
    <slot>SLT_DoRegistrationRigid()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1030</x>
-     <y>490</y>
+     <x>910</x>
+     <y>530</y>
     </hint>
     <hint type="destinationlabel">
      <x>828</x>
@@ -2219,7 +2483,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>868</x>
-     <y>700</y>
+     <y>740</y>
     </hint>
     <hint type="destinationlabel">
      <x>951</x>
@@ -2276,14 +2540,30 @@
    </hints>
   </connection>
   <connection>
+   <sender>pushButtonMacro</sender>
+   <signal>released()</signal>
+   <receiver>DlgRegistrationClass</receiver>
+   <slot>SLT_Macro()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>996</x>
+     <y>770</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>948</x>
+     <y>757</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>pushButtonGradSearch</sender>
    <signal>released()</signal>
    <receiver>DlgRegistrationClass</receiver>
    <slot>SLT_DoRegistrationGradient()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>960</x>
-     <y>189</y>
+     <x>940</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>1039</x>
@@ -2298,7 +2578,7 @@
    <slot>SLT_ManualMoveByDCMPlan()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>993</x>
+     <x>1053</x>
      <y>162</y>
     </hint>
     <hint type="destinationlabel">
@@ -2339,38 +2619,6 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>pushButtonDoLowerMask</sender>
-   <signal>released()</signal>
-   <receiver>DlgRegistrationClass</receiver>
-   <slot>SLT_DoLowerMaskIntensity()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1060</x>
-     <y>764</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1064</x>
-     <y>791</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonMoveFromDCMPlanOpen</sender>
-   <signal>released()</signal>
-   <receiver>DlgRegistrationClass</receiver>
-   <slot>SLT_ManualMoveByDCMPlanOpen()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1064</x>
-     <y>163</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1108</x>
-     <y>211</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
  <slots>
   <slot>SLT_CrntPosGo()</slot>
@@ -2396,7 +2644,5 @@
   <slot>SLT_ManualMoveByDCMPlan()</slot>
   <slot>SLT_ConfirmManualRegistration()</slot>
   <slot>SLT_IntensityNormCBCT()</slot>
-  <slot>SLT_DoLowerMaskIntensity()</slot>
-  <slot>SLT_ManualMoveByDCMPlanOpen()</slot>
  </slots>
 </ui>
