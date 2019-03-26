@@ -22,6 +22,7 @@
 
 #include <cstdio>
 #include <valarray>
+#include <memory>
 
 // Qt
 #include <qdir.h>
@@ -76,17 +77,18 @@ using CUDAFloatImageType = itk::CudaImage<float, 3U>;
 // Plastimatch
 #undef TIMEOUT
 #undef CUDA_FOUND
-#include <beam_calc.h> // used to be rt_beam in earlier plm
+/* #include <beam_calc.h> // used to be rt_beam in earlier plm
 #include <dcmtk_rt_study.h>
 #include <itk_image_type.h>
 #include <plan_calc.h> // used to be rt_plan in earlier plm
 #include <proj_matrix.h>
 #include <proj_volume.h>
 #include <ray_data.h>
-#include <volume_adjust.h>
+#include <volume_adjust.h> */
 
 // Local
 #include "AG17RGBAImage.h"
+#include "YK16GrayImage.h"
 #include "OpenCLFFTFilter.h"
 #include "StructureSet.h"
 #include "WEPL.h"

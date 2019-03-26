@@ -1,0 +1,9 @@
+# GDCM specific default CMAKE settings
+set(GDCM_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS} CACHE BOOL)
+if(WIN32)
+  set(GDCM_USE_SYSTEM_ZLIB OFF CACHE BOOL)
+  set(GDCM_USE_SYSTEM_EXPAT OFF CACHE BOOL)
+endif()
+
+set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL YES)
+FetchContent_MakeAvailable(GDCM)

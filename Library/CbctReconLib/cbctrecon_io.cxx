@@ -37,12 +37,6 @@
 #include "rtkThreeDCircularProjectionGeometryXMLFileReader.h" // for ThreeDCircularProje...
 #include "rtkThreeDCircularProjectionGeometryXMLFileWriter.h" // for ThreeDCircularProje...
 
-// PLM
-#undef TIMEOUT
-#undef CUDA_FOUND
-#include "dcmtk_rt_study.h"
-#include "plm_image.h"
-#include <rt_study_metadata.h>
 
 // local
 #include "StructureSet.h"
@@ -769,42 +763,13 @@ bool CbctRecon::ReadDicomDir(QString &dirPath) {
     }
   }
 
-  ShortImageType::Pointer spShortImg;
-
-  if (!filenamelist.empty()) {
-    using dcm_reader_type = itk::ImageSeriesReader<ShortImageType>;
-    auto dcm_reader = dcm_reader_type::New();
-    const auto dicom_io = itk::GDCMImageIO::New();
-    dcm_reader->SetImageIO(dicom_io);
-    dcm_reader->SetFileNames(filenamelist);
-    dcm_reader->Update();
-    spShortImg = dcm_reader->GetOutput();
-  } else {
-    Dcmtk_rt_study drs(dirPath.toLocal8Bit().constData());
-    drs.load_directory(); // parse_directory();
-
-    Plm_image plmImg;
-    auto tmp_img = drs.get_image();
-
-    if (!tmp_img) {
-      std::cerr << "Plastimach couldn't read image data!\n";
-      return false;
-    }
-    if (!tmp_img->have_image()) {
-      return false;
-    }
-    std::cout << "PLM_imagetype: " << tmp_img->m_type << std::endl;
-    plmImg.set(tmp_img);
-    // plmImg.load_native(dirPath.toLocal8Bit().constData());
-
-    auto planCT_ss = drs.get_rtss(); // dies at end of scope...
-    if (!planCT_ss) {
-      // ... so I copy to my own modern-C++ implementation
-      m_structures->set_planCT_ss(planCT_ss.get());
-    }
-
-    spShortImg = plmImg.itk_short();
-  }
+  using dcm_reader_type = itk::ImageSeriesReader<ShortImageType>;
+  auto dcm_reader = dcm_reader_type::New();
+  const auto dicom_io = itk::GDCMImageIO::New();
+  dcm_reader->SetImageIO(dicom_io);
+  dcm_reader->SetFileNames(filenamelist);
+  dcm_reader->Update();
+  auto spShortImg = dcm_reader->GetOutput();
 
   // Figure out whether this is NKI
   using ImageCalculatorFilterType =

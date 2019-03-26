@@ -16,28 +16,8 @@ StructureSet::StructureSet() = default;
 
 StructureSet::~StructureSet() = default;
 
-void StructureSet::set_planCT_ss(std::unique_ptr<Rtss> struct_set) {
-  m_plan_ss = std::make_unique<Rtss_modern>(struct_set.release());
-}
 void StructureSet::set_planCT_ss(std::unique_ptr<Rtss_modern> &&struct_set) {
   m_plan_ss = std::move(struct_set);
-}
-void StructureSet::set_rigidCT_ss(std::unique_ptr<Rtss> struct_set) {
-  m_rigid_ss = std::make_unique<Rtss_modern>(struct_set.release());
-}
-void StructureSet::set_deformCT_ss(std::unique_ptr<Rtss> struct_set) {
-  m_deform_ss = std::make_unique<Rtss_modern>(struct_set.release());
-}
-
-void StructureSet::set_planCT_ss(Rtss *struct_set) {
-
-  m_plan_ss = std::make_unique<Rtss_modern>(struct_set);
-}
-void StructureSet::set_rigidCT_ss(Rtss *struct_set) {
-  m_rigid_ss = std::make_unique<Rtss_modern>(struct_set);
-}
-void StructureSet::set_deformCT_ss(Rtss *struct_set) {
-  m_deform_ss = std::make_unique<Rtss_modern>(struct_set);
 }
 
 Rtss_modern *StructureSet::get_ss(const ctType struct_set) const {

@@ -22,7 +22,7 @@ SET(CbctReconLib_SOURCES
   WEPL.cxx
   cbctrecon_io.cxx
   cbctrecon_compute.cxx
-  cbctrecon_fdk.cxx
+  # cbctrecon_fdk.cxx Only contains PLM reconstruction
   cbctrecon_fdk.hxx
   rtkExtension/rtkOpenCLUtilities.cxx
   rtkExtension/rtkOpenCLFDKBackProjectionImageFilter.cxx

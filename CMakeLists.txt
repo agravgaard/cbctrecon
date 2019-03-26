@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED (VERSION 3.10) # Yes, less won't do.
+CMAKE_MINIMUM_REQUIRED (VERSION 3.14) # Yes, less won't do.
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
@@ -14,13 +14,16 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # BASIC CMAKE
 set(CbctRecon_VERSION_MAJOR "1") # bump at major change -> does NOT mean release version
 set(CbctRecon_VERSION_MINOR "4") # bump at functionality change
-set(CbctRecon_VERSION_PATCH "2") # bump at minor change
+set(CbctRecon_VERSION_PATCH "3") # bump at minor change
 
 project(CbctRecon
   VERSION "${CbctRecon_VERSION_MAJOR}.${CbctRecon_VERSION_MINOR}.${CbctRecon_VERSION_PATCH}"
   )
 
-SET(CMAKE_CXX_STANDARD 14 CACHE STRING "C++ standard specification")
+SET(CMAKE_CXX_STANDARD          14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS        ON)
+# EXT Required for opencl named types cl_float3 val -> val.x .y & .z
 
 set(CbctRecon_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 #-----------------------------------------------------------------------------
@@ -170,7 +173,7 @@ set(EXECUTEABLE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE PATH "")
 
 add_subdirectory(External)
 
-if(NOT DCMTK_FOUND)
+if(NOT DCMTK_FOUND AND USE_DCMTK)
   if(NOT USE_SYSTEM_DCMTK)
     set(DCMTK_DIR "${CMAKE_BINARY_DIR}")
   endif()

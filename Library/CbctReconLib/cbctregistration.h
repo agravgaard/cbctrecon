@@ -3,9 +3,9 @@
 
 #include <itkImage.h>
 
-#undef TIMEOUT
-#undef CUDA_FOUND
-#include "itk_mask.h"
+//#undef TIMEOUT
+//#undef CUDA_FOUND
+//#include "itk_mask.h"
 
 #include "cbctrecon_config.h"
 
@@ -21,6 +21,8 @@ class Pcmd_threshold;
 class Mask_parms;
 class Plm_image_header;
 class Dcmtk_rt_study;
+class Mask_operation;
+class DoubleVector3DType;
 
 enum enDevice {
   CPU_DEV,
