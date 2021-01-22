@@ -71,7 +71,7 @@ RUN git clone https://github.com/KhronosGroup/SyclParallelSTL.git \
   && mkdir build && cd build \
   && cmake ../ -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_CXX_FLAGS="-fopenmp" \
     -DUSE_COMPUTECPP=OFF \
     -DHIPSYCL_PLATFORM=rocm \
@@ -108,7 +108,7 @@ RUN cd /home/user/ \
     && export CC=/opt/rocm/hip/bin/hipcc  \
     && export CXX=/opt/rocm/hip/bin/hipcc \
     && cmake -G Ninja ../ITK \
-      -D CMAKE_CXX_STANDARD=17 \
+      -D CMAKE_CXX_STANDARD=20 \
       -D CMAKE_BUILD_TYPE=Release \
       -D BUILD_TESTING=OFF -D BUILD_EXAMPLES=OFF \
       -D Module_ITKReview=ON \

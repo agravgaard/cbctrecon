@@ -44,7 +44,7 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
 #        -D LLVM_ENABLE_PROJECTS="all" \
 #        -D CMAKE_BUILD_TYPE=Release \
 #        -D PSTL_PARALLEL_BACKEND="tbb" \
-#        -D CMAKE_CXX_STANDARD=17 \
+#        -D CMAKE_CXX_STANDARD=20 \
 #    && ninja \
 #    && ninja install \
 #    && cd ../.. \

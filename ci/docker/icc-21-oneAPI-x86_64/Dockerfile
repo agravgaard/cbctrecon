@@ -68,7 +68,7 @@ RUN ["/bin/bash", "-c", "cd /home/user/ \
     && export CXXFLAGS='-I/opt/intel/oneapi/tbb/latest/include/ -I/opt/intel/oneapi/tbb/latest/include/tbb' \
     && export LDFLAGS='-L/opt/intel/oneapi/tbb/latest/lib/intel64/gcc4.8/ -ltbb' \
     && cmake -G Ninja ../ITK \
-      -D CMAKE_CXX_STANDARD=17 \
+      -D CMAKE_CXX_STANDARD=20 \
       -D CMAKE_BUILD_TYPE=Release \
       -D BUILD_TESTING=OFF -D BUILD_EXAMPLES=OFF \
       -D Module_ITKReview=ON \

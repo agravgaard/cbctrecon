@@ -24,7 +24,7 @@ RUN cd /home/user/ \
     && export CXXFLAGS="-I/usr/include -I/usr/include/tbb -fopenmp-simd" \
     && export LDFLAGS="-L/usr/lib/x86_64-linux-gnu -ltbb" \
     && cmake -G Ninja ../ITK \
-      -D CMAKE_CXX_STANDARD=17 \
+      -D CMAKE_CXX_STANDARD=20 \
       -D CMAKE_BUILD_TYPE=Release \
       -D BUILD_TESTING=OFF -D BUILD_EXAMPLES=OFF \
       -D Module_ITKReview=ON \

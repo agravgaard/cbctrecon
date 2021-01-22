@@ -48,6 +48,7 @@ RUN mkdir /opt/cmake && cd /opt/cmake \
 
 # Get a newer version of TBB, Qt and dlib
 # We need at least GCC 9 for proper C++17 support
+# No C++ compiler has full C++ 20 support, yet
 # noninteractive to install tzdata (maybe a dependency of qt or dlib?)
 RUN export DEBIAN_FRONTEND="noninteractive" \
     && echo "deb http://archive.ubuntu.com/ubuntu/ groovy main universe" >> /etc/apt/sources.list \
@@ -113,7 +114,7 @@ RUN cd /home/user/ \
     && cd ITK-build \
     && export CC=gcc-10 && export CXX=g++-10 \
     && export CXXFLAGS="-fopenmp-simd" \
-    && cmake -GNinja ../ITK -DCMAKE_CXX_STANDARD=17 \
+    && cmake -GNinja ../ITK -DCMAKE_CXX_STANDARD=20 \
       -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF \
       -DModule_ITKReview=ON \
       -DITK_USE_GPU=ON \
