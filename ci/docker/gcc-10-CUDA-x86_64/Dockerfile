@@ -108,7 +108,7 @@ RUN git config --global user.email "andreasga22@gmail.com" \
 # Also, we'll have to use my patched fork of RTK to forward the correct std=c++ flag to CUDA
 RUN cd /home/user/ \
     && git clone --depth 1 --branch "master" https://github.com/InsightSoftwareConsortium/ITK.git ITK \
-    #&& sed -i 's/SimonRit/agravgaard/g' ./ITK/Modules/Remote/RTK.remote.cmake \
+    && sed -i 's/SimonRit/agravgaard/g' ./ITK/Modules/Remote/RTK.remote.cmake \
     && sed -i 's/GIT_TAG .*/GIT_TAG master/g' ./ITK/Modules/Remote/RTK.remote.cmake \
     && mkdir -p /home/user/ITK-build \
     && cd ITK-build \
