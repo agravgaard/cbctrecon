@@ -32,7 +32,7 @@ set(ITK_GIT_TAG master)
 set(plm Plastimatch)
 set(${plm}_GIT_REPOSITORY "${git_protocol}lab.com/agravgaard/plastimatch.git")
 # set(${plm}_GIT_REPOSITORY "${git_protocol}lab.com/plastimatch/plastimatch.git")
-set(${plm}_GIT_TAG 1.9.0-cbctrecon)
+set(${plm}_GIT_TAG 1.9.3-cbctrecon)
 
 set(TINYREFL_GIT_REPOSITORY "${git_protocol}lab.com/Manu343726/tinyrefl.git")
 set(TINYREFL_GIT_TAG master)
