@@ -22,7 +22,7 @@ RUN export CC=/usr/bin/gcc-10 \
     && git clone --depth 1 --branch "master" https://github.com/InsightSoftwareConsortium/ITK.git ITK \
     && mkdir -p /home/user/ITK-build \
     && cd ITK-build \
-    && cmake -GNinja ../ITK -DCMAKE_CXX_STANDARD=17 -DCMAKE_BUILD_TYPE=Release \
+    && cmake -GNinja ../ITK -DCMAKE_CXX_STANDARD=20 -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF \
       -DModule_ITKReview=ON -DITK_USE_GPU=ON -DITK_BUILD_DEFAULT_MODULES=OFF \
       -DITK_USE_SYSTEM_FFTW=ON -DITK_USE_FFTWF=ON -DITK_USE_FFTWD=ON \
