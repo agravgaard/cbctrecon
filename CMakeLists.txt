@@ -261,6 +261,9 @@ if(TBB_FOUND)
   message(STATUS "TBB Libs: ${TBB_LIBRARIES}")
 endif()
 
+# Because if we don't set it external ITK will set it to /bin (yes, /, as in the root dir) because they are evil like that.
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin CACHE PATH "Runtime library directory")
+
 add_subdirectory(External)
 
 if(NOT USE_ITK_DCMTK)
