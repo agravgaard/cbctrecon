@@ -7,13 +7,6 @@
 #include "OpenCL/device_picker.hpp"
 #include "OpenCL/err_code.hpp"
 
-#ifndef CL_DEVICE_SIMD_PER_COMPUTE_UNIT_AMD
-#define CL_DEVICE_SIMD_PER_COMPUTE_UNIT_AMD 0x4040
-#endif
-#ifndef CL_DEVICE_WAVEFRONT_WIDTH_AMD
-#define CL_DEVICE_WAVEFRONT_WIDTH_AMD 0x4043
-#endif
-
 int main(int argc, char **argv) {
 
   // Get list of platforms
@@ -96,9 +89,17 @@ int main(int argc, char **argv) {
     } else if (plat_name.compare(0, 3, "AMD") == 0) {
       FLOPs = 1;
       auto float_vec_width =
+#ifndef CL_DEVICE_SIMD_PER_COMPUTE_UNIT_AMD
+          4; // Value for Vega 64
+#else
           dev.getInfo<CL_DEVICE_SIMD_PER_COMPUTE_UNIT_AMD>(&cl_err) / 2;
+#endif
       compute_units *=
+#ifndef CL_DEVICE_WAVEFRONT_WIDTH_AMD
+          64; // Value for Vega 64
+#else
           dev.getInfo<CL_DEVICE_WAVEFRONT_WIDTH_AMD>(&cl_err) * float_vec_width;
+#endif
     } else { // Intel CPUs seem to scale with vector width:
              // https://en.wikipedia.org/wiki/FLOPS#FLOPs_per_cycle_for_various_processors
              // I'll have to test on AMD CPU and GPU and Intel GPU hardware to
