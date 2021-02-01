@@ -113,41 +113,41 @@ add_cbctrecon_test(
 add_test(
   NAME ${test_target}_add_2d
   COMMAND $<TARGET_FILE:${test_target}> add_const_2d_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 add_test(
   NAME ${test_target}_add_mul
   COMMAND $<TARGET_FILE:${test_target}> add_mul_const_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 add_test(
   NAME ${test_target}_min_max
   COMMAND $<TARGET_FILE:${test_target}> min_max_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 add_test(
   NAME ${test_target}_min_max_2d
   COMMAND $<TARGET_FILE:${test_target}> min_max_2d_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 add_test(
   NAME ${test_target}_divide_3d_by_3d_loginv
   COMMAND $<TARGET_FILE:${test_target}> divide_3Dby3D_loginv_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 # add_test( NAME ${test_target}_ItoLogI_subtract_median COMMAND
 # $<TARGET_FILE:${test_target}> ItoLogI_subtract_median_filter WORKING_DIRECTORY
-# ${CMAKE_INSTALL_PREFIX}/bin )
+# ${CMAKE_INSTALL_BINDIR} )
 
 add_test(
   NAME ${test_target}_ItoLogI_subtract_median_small
   COMMAND $<TARGET_FILE:${test_target}> ItoLogI_subtract_median_filter_small
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 add_test(
   NAME ${test_target}_ItoLogI_subtract_median_gaussian
   COMMAND $<TARGET_FILE:${test_target}> ItoLogI_subtract_median_gaussian_filter
-  WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+  WORKING_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 
 ExternalData_add_test(
   CbctData
@@ -158,7 +158,7 @@ ExternalData_add_test(
   crop_by_struct_filter
   DATA{Input/Alderson/CT.tar.gz}
   WORKING_DIRECTORY
-  ${CMAKE_INSTALL_PREFIX}/bin)
+  ${CMAKE_INSTALL_BINDIR})
 
 # Test: Forward projection, for OpenCL if available
 

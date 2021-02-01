@@ -57,11 +57,11 @@ target_link_libraries(
 
 set(GPMC_SRC_DIR ${PROJECT_SOURCE_DIR})
 
-install(TARGETS gPMC DESTINATION bin)
+install(TARGETS gPMC DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 set(GPMC_DLLS "${GPMC_LIB_DIR}/goPMC.dll" "${GPMC_LIB_DIR}/dcmtk.dll"
               "${GPMC_LIB_DIR}/libDicomRT.dll")
-install(FILES ${GPMC_DLLS} DESTINATION bin)
+install(FILES ${GPMC_DLLS} DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 file(GLOB LUT_FILES "${PROJECT_SOURCE_DIR}/input/*.bin")
 install(FILES ${LUT_FILES} DESTINATION lut)

@@ -3,7 +3,7 @@
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if(APPLE)
-  set(CMAKE_INSTALL_RPATH bin)
+  set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_BINDIR})
 endif(APPLE)
 
 # Packaging
@@ -64,12 +64,6 @@ if(CBCTRECON_SANITIZE)
   sanitize_build(CbctRecon)
 endif()
 
-set_target_properties(
-  CbctRecon
-  PROPERTIES RUNTIME_OUTPUT_DIRECTORY bin
-             LIBRARY_OUTPUT_DIRECTORY lib
-             ARCHIVE_OUTPUT_DIRECTORY lib)
-
 set(QT_USE_QTCORE TRUE)
 set(QT_USE_QTGUI TRUE)
 set(QT_USE_QTOPENGL TRUE)
@@ -112,7 +106,7 @@ target_link_libraries(CbctRecon PRIVATE CbctReconLib)
 # ############# INSTALL ##############
 # Using install/bin as storage for all dependencies before copy to INSTALL_PREFIX/bin ##
 
-file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin)
+file(MAKE_DIRECTORY ${CMAKE_INSTALL_BINDIR})
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lut)
 
 if(WIN32)
@@ -122,7 +116,7 @@ if(WIN32)
       $<TARGET_FILE:Qt5::OpenGL>
       $<TARGET_FILE:Qt5::Core>
       $<TARGET_FILE:Qt5::PrintSupport>)
-  install(FILES ${QT_DLLS} DESTINATION bin)
+  install(FILES ${QT_DLLS} DESTINATION ${CMAKE_INSTALL_BINDIR})
 elseif(APPLE)
   foreach(target ${QT_LIBRARIES})
     get_target_property(type ${target} TYPE)
@@ -147,7 +141,7 @@ elseif(APPLE)
     message(STATUS "Attmpting installing ${QT_LIB_NAME_tmp} from dir: ${QT_LIB_DIR_tmp}")
     install(
       DIRECTORY ${QT_LIB_DIR_tmp}/
-      DESTINATION bin/${QT_LIB_NAME_tmp}.framework/
+      DESTINATION ${CMAKE_INSTALL_BINDIR}/${QT_LIB_NAME_tmp}.framework/
       COMPONENT Runtime # ${CMAKE_CURRENT_BINARY_DIR}/../
       FILES_MATCHING
       PATTERN "${QT_LIB_NAME_tmp}*"
@@ -157,13 +151,13 @@ endif()
 
 install(
   TARGETS CbctRecon
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
-  PUBLIC_HEADER DESTINATION include
-  RESOURCE DESTINATION bin/ui)
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+  RESOURCE DESTINATION ${CMAKE_INSTALL_BINDIR}/ui)
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ui/style.qss DESTINATION bin/ui)
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/ui/style.qss DESTINATION ${CMAKE_INSTALL_BINDIR}/ui)
 
 # -----------------------------------------------------------------------------
 # Additional install files
@@ -172,7 +166,7 @@ if(WIN32)
   if(NOT USE_SYSTEM_QT)
     hunter_add_package(Qt COMPONENTS qttools)
   endif()
-  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/WindeployQt.cmake)
+  include(${CMAKE_CURRENT_LIST_DIR}/cmake/WindeployQt.cmake)
   if($<CONFIG:Debug>)
     windeployqt(CbctRecon "debug" "${CMAKE_CURRENT_BINARY_DIR}/QtLibs")
   else()
@@ -180,7 +174,7 @@ if(WIN32)
   endif()
 
   file(GLOB DLLFILES "${CMAKE_CURRENT_BINARY_DIR}/QtLibs/*.dll")
-  install(FILES ${DLLFILES} DESTINATION bin)
+  install(FILES ${DLLFILES} DESTINATION ${CMAKE_INSTALL_BINDIR})
   set(QT_SUBDIRS
       "iconengines"
       "imageformats"
@@ -188,7 +182,7 @@ if(WIN32)
       "styles"
       "translations")
   foreach(subdir ${QT_SUBDIRS})
-    install(DIRECTORY "$<TARGET_FILE_DIR:CbctRecon>/${subdir}" DESTINATION bin)
+    install(DIRECTORY "$<TARGET_FILE_DIR:CbctRecon>/${subdir}" DESTINATION ${CMAKE_INSTALL_BINDIR})
   endforeach()
 
   if(OPENMP_FOUND)

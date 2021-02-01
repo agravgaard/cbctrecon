@@ -28,7 +28,7 @@ macro(add_cbctrecon_app)
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../Testing/"
     PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-  install(TARGETS ${ARGS_TARGET} RUNTIME DESTINATION bin)
+  install(TARGETS ${ARGS_TARGET} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 endmacro()
 
 add_cbctrecon_app(TARGET opencl_tester)

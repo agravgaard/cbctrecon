@@ -193,33 +193,33 @@ endif()
 
 install(
   TARGETS CbctReconLib
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
-  PUBLIC_HEADER DESTINATION include)
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-set(RUNTIME_DIR ${CMAKE_INSTALL_PREFIX}/bin)
+set(RUNTIME_DIR ${CMAKE_INSTALL_BINDIR})
 
 add_custom_command(
   TARGET CbctReconLib
   POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
           "${CMAKE_CURRENT_SOURCE_DIR}/fdk_opencl.cl" "${RUNTIME_DIR}")
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fdk_opencl.cl DESTINATION bin)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fdk_opencl.cl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 add_custom_command(
   TARGET CbctReconLib
   POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
           "${CMAKE_CURRENT_SOURCE_DIR}/rtkExtension/forward_proj.cl" "${RUNTIME_DIR}")
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/rtkExtension/forward_proj.cl DESTINATION bin)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/rtkExtension/forward_proj.cl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 add_custom_command(
   TARGET CbctReconLib
   POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
           "${CMAKE_CURRENT_SOURCE_DIR}/OpenCL/filters.cl" "${RUNTIME_DIR}")
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/OpenCL/filters.cl DESTINATION bin)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/OpenCL/filters.cl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # -----------------------------------------------------------------------------
 # Additional install files
@@ -235,7 +235,7 @@ if(WIN32)
     foreach(p ${DLL_PATTERNS})
       file(GLOB DLLFILES "${CUDA_TOOLKIT_ROOT_DIR}/bin/${p}")
       if(DLLFILES)
-        install(FILES ${DLLFILES} DESTINATION bin)
+        install(FILES ${DLLFILES} DESTINATION ${CMAKE_INSTALL_BINDIR})
       endif()
     endforeach()
   endif()
@@ -246,17 +246,16 @@ if(WIN32)
     foreach(p ${DLL_PATTERNS})
       file(GLOB DLLFILES "${ITK_DIR}/bin/release/${p}")
       if(DLLFILES)
-        install(FILES ${DLLFILES} DESTINATION bin)
+        install(FILES ${DLLFILES} DESTINATION ${CMAKE_INSTALL_BINDIR})
       endif()
     endforeach()
   endif()
 
   if(RTK_FOUND)
-    install(FILES ${RTK_DIR}/bin/release/RTK.dll DESTINATION bin)
-    install(FILES ${RTK_DIR}/bin/release/rtkcuda.dll DESTINATION bin)
-    install(FILES ${RTK_DIR}/bin/release/ITKCudaCommon.dll DESTINATION bin)
-    install(FILES ${RTK_DIR}/bin/release/lpsolve55.dll DESTINATION bin) # is 55 a version
-                                                                        # number?
+    install(FILES ${RTK_DIR}/bin/release/RTK.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${RTK_DIR}/bin/release/rtkcuda.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${RTK_DIR}/bin/release/ITKCudaCommon.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${RTK_DIR}/bin/release/lpsolve55.dll DESTINATION ${CMAKE_INSTALL_BINDIR}) # is 55 a version
   endif()
 
   if(Plastimatch_FOUND)
@@ -264,30 +263,30 @@ if(WIN32)
     foreach(p ${DLL_PATTERNS})
       file(GLOB DLLFILES "${Plastimatch_BUILD_DIR}/release/${p}")
       if(DLLFILES)
-        install(FILES ${DLLFILES} DESTINATION bin)
+        install(FILES ${DLLFILES} DESTINATION ${CMAKE_INSTALL_BINDIR})
       endif()
     endforeach()
   endif()
 
   if(USE_CLFFT)
-    install(FILES ${CLFFT_ROOT_DIR}/bin/clFFT.dll DESTINATION bin)
+    install(FILES ${CLFFT_ROOT_DIR}/bin/clFFT.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
   endif()
   if(TBB_FOUND)
     get_target_property(TBB_DLLS TBB::tbb IMPORTED_LOCATION_RELEASE)
-    install(FILES ${TBB_DLLS} DESTINATION bin)
+    install(FILES ${TBB_DLLS} DESTINATION ${CMAKE_INSTALL_BINDIR})
     get_target_property(TBB_DLLS TBB::tbbmalloc IMPORTED_LOCATION_RELEASE)
-    install(FILES ${TBB_DLLS} DESTINATION bin)
+    install(FILES ${TBB_DLLS} DESTINATION ${CMAKE_INSTALL_BINDIR})
     get_target_property(TBB_DLLS TBB::tbbmalloc_proxy IMPORTED_LOCATION_RELEASE)
-    install(FILES ${TBB_DLLS} DESTINATION bin)
+    install(FILES ${TBB_DLLS} DESTINATION ${CMAKE_INSTALL_BINDIR})
   endif()
 
   # Add FFT dlls to Install
   if(FFTW_FOUND)
     if(EXISTS "${FFTW_DIR}/libfftw3-3.dll")
-      install(FILES "${FFTW_DIR}/libfftw3-3.dll" DESTINATION bin)
+      install(FILES "${FFTW_DIR}/libfftw3-3.dll" DESTINATION ${CMAKE_INSTALL_BINDIR})
     endif()
     if(EXISTS "${FFTW_DIR}/libfftw3f-3.dll")
-      install(FILES "${FFTW_DIR}/libfftw3f-3.dll" DESTINATION bin)
+      install(FILES "${FFTW_DIR}/libfftw3f-3.dll" DESTINATION ${CMAKE_INSTALL_BINDIR})
     endif()
   endif()
 endif()

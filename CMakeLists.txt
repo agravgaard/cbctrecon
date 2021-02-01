@@ -262,7 +262,7 @@ if(TBB_FOUND)
 endif()
 
 # Because if we don't set it external ITK will set it to /bin (yes, /, as in the root dir) because they are evil like that.
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin CACHE PATH "Runtime library directory")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin CACHE PATH "Runtime library directory")
 
 add_subdirectory(External)
 
@@ -389,6 +389,7 @@ if(CBCTRECON_COVERAGE)
     COMMENT "Generating HTML report html/index.html")
 endif()
 
+include(GNUInstallDirs)
 add_subdirectory(Library)
 add_subdirectory(Applications)
 

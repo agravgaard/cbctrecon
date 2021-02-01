@@ -30,7 +30,7 @@ function(add_cbctrecon_example)
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../Testing/"
     PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-  install(TARGETS ${ARGS_TARGET} RUNTIME DESTINATION bin)
+  install(TARGETS ${ARGS_TARGET} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 endfunction()
 
