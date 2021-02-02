@@ -261,8 +261,12 @@ if(TBB_FOUND)
   message(STATUS "TBB Libs: ${TBB_LIBRARIES}")
 endif()
 
-# Because if we don't set it external ITK will set it to /bin (yes, /, as in the root dir) because they are evil like that.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin CACHE PATH "Runtime library directory")
+
+if(NOT USE_SYSTEM_ITK)
+  # Because if we don't set it external ITK (HDF5) will set it to /bin (yes, /, as in the root dir) because they are evil like that.
+  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib CACHE PATH "Archive library directory")
+endif()
 
 add_subdirectory(External)
 
