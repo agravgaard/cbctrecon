@@ -77,12 +77,12 @@ Ubuntu-clang11-ROCm:
       - gpu
     image: andreasga/cbctrecon:clang-11-ROCm-x86_64
     script:
-      - export CC=/opt/rocm/hip/bin/hipcc
-      - export CXX=/opt/rocm/hip/bin/hipcc
-      # - export CXXFLAGS="-stdlib=libc++"
+      - export CC=/usr/bin/clang
+      - export CXX=/usr/bin/clang++
       - export CUSTOM_CMAKE_FLAGS="-DOpenMP_CXX_FLAGS='-fopenmp=libomp' -DOpenMP_CXX_LIB_NAMES=omp"
       - export CUSTOM_CMAKE_FLAGS="$CUSTOM_CMAKE_FLAGS -DHIPSYCL_SYCLCC_EXTRA_ARGS='--rocm-device-lib-path=/opt/rocm/amdgcn/bitcode/'"
       - export CUSTOM_CMAKE_FLAGS="$CUSTOM_CMAKE_FLAGS -DHIPSYCL_ROCM_PATH=/opt/rocm/"
+      - export CUSTOM_CMAKE_FLAGS='$CUSTOM_CMAKE_FLAGS -DHIPSYCL_TARGETS="hip:gfx900;omp"'
       - wget -O rocm_pass.svg https://img.shields.io/badge/ROCm-failing-red.svg
       - ./ci/ci.sh
       - wget -O rocm_pass.svg https://img.shields.io/badge/ROCm-passing-green.svg
