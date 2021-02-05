@@ -1,4 +1,4 @@
-FROM andreasga/cbctrecon:intel-opencl-runtime-cpu
+FROM andreasga/cbctrecon:clang-11-x86_64
 MAINTAINER Andreas Gravgaard Andersen <andreasga22@gmail.com>
 
 USER root
@@ -51,10 +51,10 @@ RUN git clone https://github.com/illuhad/hipSYCL --recurse-submodules \
   && mkdir build && cd build \
   && cmake ../ -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLLVM_DIR=/opt/rocm/llvm/lib/cmake/ \
+    -DCMAKE_CXX_STANDARD=20 \
     -DWITH_ROCM_BACKEND=ON \
-    -DCLANG_INCLUDE_PATH=/opt/rocm/llvm/lib/clang/12.0.0/ \
     -DWITH_CPU_BACKEND=ON \
+    -DAMDDeviceLibs_DIR=/opt/rocm/amdgcn/bitcode/ \
   && ninja \
   && ninja install \
   && cd ../.. \
@@ -74,15 +74,10 @@ RUN git clone https://github.com/KhronosGroup/SyclParallelSTL.git \
     -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_CXX_FLAGS="-fopenmp" \
     -DUSE_COMPUTECPP=OFF \
-    -DHIPSYCL_PLATFORM=rocm \
-    -DHIPSYCL_GPU_ARCH=gfx900 \
-    -DHIPSYCL_ROCM_PATH=/opt/rocm/ \
+    -Dhipsycl_DIR=/usr/local/lib/cmake/hipSYCL \
+    -DHIPSYCL_TARGETS="hip:gfx900;omp" \
     -DHIPSYCL_SYCLCC_EXTRA_ARGS="--rocm-device-lib-path=/opt/rocm/amdgcn/bitcode/" \
-    -Dhipsycl_DIR=/usr/local/lib/cmake/ \
-  && ninja \
-  && ninja install \
-  && cd ../.. \
-  && rm -Rf SyclParallelSTL
+  && ninja
 
 WORKDIR /home/user/
 
@@ -105,8 +100,6 @@ RUN cd /home/user/ \
     && sed -i 's/H5_ZLIB_HEADER/\"itk_zlib.h\"/g' ./ITK/Modules/ThirdParty/HDF5/src/itkhdf5/src/H5Zdeflate.c \
     && mkdir -p /home/user/ITK-build \
     && cd ITK-build \
-    && export CC=/opt/rocm/hip/bin/hipcc  \
-    && export CXX=/opt/rocm/hip/bin/hipcc \
     && cmake -G Ninja ../ITK \
       -D CMAKE_CXX_STANDARD=20 \
       -D CMAKE_BUILD_TYPE=Release \
